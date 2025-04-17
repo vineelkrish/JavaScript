@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <script>
+        function LongestSubstring(str){
+            if(str.length===0 || str.length===1) return str;
+            let start=0;
+            let max_len=1;
+            for(let i=0;i<str.length;i++)
+            {
+                //odd length
+                let low=i;
+                let high=i;
+                while(low>=0 && high<=str.length && str[low]==str[high])
+                {
+                   if(high-low+1 > max_len)
+                   {
+                    start=low;
+                    max_len=high-low+1;
+                   }  
+                   low--;
+                   high++;
+                }
+                //even length
+                low=i;
+                high=i+1;
+                while(low>=0 && high<=str.length && str[low]==str[high])
+                {
+                    if(high-low+1 > max_len)
+                    {
+                        start=low;
+                        max_len=high-low+1;
+                    }
+                    low--;
+                    high++;
+                }
+            }
+            return str.substring(start,start+max_len);
+        }
+
+        console.log(LongestSubstring('abcdfggfd'));
+    </script>
+</body>
+</html>
