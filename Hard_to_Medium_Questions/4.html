@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <script>
+        //  Global Scope
+let globalVar = "I'm global!";
+
+function testScopes() {
+  let localVar = "I'm local to this function";
+
+  console.log("Inside function:");
+  console.log(globalVar); //  Can access globalVar
+  console.log(localVar);  //  Can access localVar
+
+  {
+    let blockVar = "I'm inside a block";
+    console.log(blockVar); // ✅ Accessible here
+
+    let globalVar = "I'm shadowing the global one!";
+    console.log("Shadowed globalVar:", globalVar); // ⚠️ Shows local value
+  }
+
+  // console.log(blockVar); // ❌ Error: blockVar is not defined here
+}
+
+testScopes();
+
+console.log("\nOutside function:");
+console.log(globalVar); // ✅ Can access globalVar
+// console.log(localVar); // ❌ Error: localVar is not defined
+// console.log(blockVar); // ❌ Error: blockVar is not defined
+
+    </script>
+</body>
+</html>
