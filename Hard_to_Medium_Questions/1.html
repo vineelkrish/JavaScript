@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <script>
+        function formatCurrency(amount,currencyCode){
+            let symbol='';
+            let beforeSymbol=true;
+            let decimalPlaces=2;
+            if(currencyCode === 'USD')
+            symbol='$';
+            else if(currencyCode === 'INR')
+            symbol='₹';
+            else if(currencyCode === 'EUR')
+            symbol='€';
+            else if(currencyCode === 'YEN')
+            {
+                symbol='¥';
+                decimalPlaces=0;
+            }
+            else{
+                return amount.toString();
+            }
+
+            let rounded=amount.toFixed(decimalPlaces);
+            let parts=rounded.split('.');
+            let integerPart=parts[0];
+            let decimalPart=parts[1];
+            withCommas='';
+            let count=0;
+            for(let i=integerPart.length-1;i>=0;i--)
+            {
+                withCommas=integerPart[i]+withCommas;
+                count++;
+                if(count%3 === 0 && i!==0){
+                    withCommas=','+ withCommas;
+                }
+
+            }
+            let finalNumber= (decimalPart!== undefined)?withCommas+'.'+decimalPart:withCommas;
+            return finalNumber;
+        }
+        console.log(formatCurrency(125355.899,'USD'));
+    </script>
+</body>
+</html>
