@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul class="mylist">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        <li>Dog</li>
+    </ul>
+    <script>
+        let litems=document.querySelectorAll('.mylist li');
+        console.log("All items selected: ",litems);
+        litems.forEach(function(item,index){
+            if((index+1)%2 === 0){
+            
+                item.classList.add('highlight');
+                console.log("HighLight added to item"+(index+1));
+            }
+        });
+
+        console.log("Total number of list items:",listItems.length);
+
+    </script>
+</body>
+</html>
