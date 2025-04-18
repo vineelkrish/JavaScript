@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+</head>
+<body>
+    <div id="container">
+        <h1>My List</h1>
+        <ul id="myList">
+            <li class="item" onclick="
+                this.remove();
+                ">Item 1</li>
+            <li class="item" onclick="
+            this.remove();
+            ">Item 2</li>
+            <li class="item" onclick="
+            this.remove();
+            ">Item 3</li>
+        
+        </ul>
+        <button id="addButton" onclick="addItem();">Add Item</button>
+      </div>      
+    <script>
+        function addItem(){
+            const ulist= document.querySelector('#myList');
+                ulist.innerHTML+=`<li class="item" onclick="this.remove();">New Item</li>`;
+        }
+    </script>
+</body>
+</html>

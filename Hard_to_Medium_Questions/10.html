@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10</title>
+</head>
+<body>
+    <script>
+        function processTransactions(transactions){
+            let totalDeposits=0;
+            let totalWithdraw=0;
+            let balance=0;
+            for(transaction of transactions)
+            {
+                if(transaction.type==='deposit')
+                {
+                    balance+=transaction.amount;
+                    totalDeposits+=transaction.amount;
+                }
+                else if(transaction.type==='withdraw')
+                {
+                    balance-=transaction.amount;
+                    totalWithdraw+=transaction.amount;
+                }
+            }
+            return{
+                Final_Balance: balance,
+                Deposited_Amount: totalDeposits,
+                Withdrawed_Amount: totalWithdraw
+            };
+        }
+
+    const transactions = [
+        { type: 'deposit', amount: 100 },
+        { type: 'withdraw', amount: 40 },
+        { type: 'deposit', amount: 50 }
+    ];
+
+console.log(processTransactions(transactions));
+    </script>
+</body>
+</html>

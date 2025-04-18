@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .styling{
+            border:none;
+            background-color: rgb(142, 251, 142);
+            color:white;
+            padding:10px;
+            font-weight: 800;
+        }
+        .dec{
+            background-color: rgb(248, 140, 140);
+        }
+    </style>
+</head>
+<body>
+    <div class="display-count"></div>
+    <button class="styling inc" onclick="inc();">Increase</button>
+    <button class="styling dec" onclick="dec();">Decrease</button>
+    <script>
+        let count=0;
+        function inc(){
+            count++;
+            document.querySelector('.display-count').innerHTML=`Count: ${count}`;
+        }
+        function dec(){
+            if(count-1 >= 0)
+            count--;
+            document.querySelector('.display-count').innerHTML=`Count: ${count}`;
+        }
+        
+    </script>
+</body>
+</html>
