@@ -7,33 +7,29 @@
 </head>
 <body>
     <script>
-        //  Global Scope
+        
 let globalVar = "I'm global!";
 
 function testScopes() {
   let localVar = "I'm local to this function";
 
   console.log("Inside function:");
-  console.log(globalVar); //  Can access globalVar
-  console.log(localVar);  //  Can access localVar
+  console.log(globalVar); 
+  console.log(localVar);
 
   {
     let blockVar = "I'm inside a block";
-    console.log(blockVar); // ✅ Accessible here
+    console.log(blockVar); 
 
     let globalVar = "I'm shadowing the global one!";
-    console.log("Shadowed globalVar:", globalVar); // ⚠️ Shows local value
+    console.log("Shadowed globalVar:", globalVar); 
   }
-
-  // console.log(blockVar); // ❌ Error: blockVar is not defined here
 }
 
 testScopes();
 
 console.log("\nOutside function:");
-console.log(globalVar); // ✅ Can access globalVar
-// console.log(localVar); // ❌ Error: localVar is not defined
-// console.log(blockVar); // ❌ Error: blockVar is not defined
+console.log(globalVar); 
 
     </script>
 </body>
