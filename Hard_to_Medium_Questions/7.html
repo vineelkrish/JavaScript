@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7</title>
+</head>
+<body>
+    <script>
+        
+        function createBook(title,author,ISBN){
+            return{
+                title:title,
+                author:author,
+                ISBN:ISBN,
+                isBorrowed:false,
+
+                borrow: function(){
+                    if(!this.isBorrowed){
+                        this.isBorrowed=true;
+                        console.log(`${this.title} is has been borrowed`);
+                    }
+                    else{
+                        console.log(`${this.title} is already borrowed`);
+                    }
+                },
+                returnBook: function(){
+                    if(this.isBorrowed){
+                        this.isBorrowed=false;
+                        console.log(`${this.title} has been removed.`);
+                    }
+                    else
+                    {
+                        console.log(`${this.title} was not borrowed`);
+                    }
+                }
+            };
+        }
+function createLibrary() {
+    let books = [];
+
+    return {
+        addBook: function (book) {
+            books.push(book);
+            console.log('Book "' + book.title + '" added to the library.');
+        },
+
+        findBookByISBN: function (isbn) {
+            for (let i = 0; i < books.length; i++) {
+                if (books[i].ISBN === isbn) {
+                    return books[i];
+                }
+            }
+            return null;
+        },
+
+        listAvailableBooks: function () {
+            let available = [];
+            for (let i = 0; i < books.length; i++) {
+                if (!books[i].isBorrowed) {
+                    available.push(books[i]);
+                }
+            }
+            return available;
+        },
+
+        listBorrowedBooks: function () {
+            let borrowed = [];
+            for (let i = 0; i < books.length; i++) {
+                if (books[i].isBorrowed) {
+                    borrowed.push(books[i]);
+                }
+            }
+            return borrowed;
+        }
+    };
+}
+
+let library = createLibrary();
+
+let book1 = createBook("The Alchemist", "Paulo Coelho", "12345");
+let book2 = createBook("Atomic Habits", "James Clear", "67890");
+let book3 = createBook("Clean Code", "Robert Martin", "54321");
+
+library.addBook(book1);
+library.addBook(book2);
+library.addBook(book3);
+
+book2.borrow();
+
+let found = library.findBookByISBN("67890");
+if (found !== null) {
+    console.log("Book found: " + found.title);
+} else {
+    console.log("Book not found.");
+}
+
+console.log("Available books:");
+let available = library.listAvailableBooks();
+for (let i = 0; i < available.length; i++) {
+    console.log(available[i].title);
+}
+
+console.log("Borrowed books:");
+let borrowed = library.listBorrowedBooks();
+for (let i = 0; i < borrowed.length; i++) {
+    console.log(borrowed[i].title);
+}
+
+book2.returnBook();
+
+    </script>
+</body>
+</html>
