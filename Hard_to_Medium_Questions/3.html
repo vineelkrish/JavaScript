@@ -18,17 +18,18 @@
         <li>Dog</li>
     </ul>
     <script>
-        let litems=document.querySelectorAll('.mylist li');
-        console.log("All items selected: ",litems);
-        litems.forEach(function(item,index){
-            if((index+1)%2 === 0){
+        let litem=document.querySelector('.mylist');
+        let litems=litem.children;
+        console.log("All items selected: ",litem);
+        for(let i=0;i<litems.length;i++){
+            if((i+1)%2 === 0){
             
-                item.classList.add('highlight');
-                console.log("HighLight added to item"+(index+1));
+                litems[i].classList.add('highlight');
+                console.log("HighLight added to item"+(i+1));
             }
-        });
+        }
 
-        console.log("Total number of list items:",listItems.length);
+        console.log("Total number of list items:",litems.length);
 
     </script>
 </body>
