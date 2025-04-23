@@ -5,7 +5,13 @@
  for(let i=0;i<todo.length;i++)
  {
     const td=todo[i];
-    const html=`<p>${td}</p>`;
+    const html=`<p>
+    ${td} 
+    <button onclick="
+     todo.splice(${i},1);
+     renderTodo();
+    ">Delete</button>
+    </p>`;
     todoHTML+=html;
  }
  document.querySelector('.todo-list').innerHTML=todoHTML;
