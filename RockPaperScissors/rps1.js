@@ -15,7 +15,13 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     };
   }
   */
-  
+  function autoplay(){
+    setInterval(function(){
+      const playerMove= pickComputerMove();
+
+      playGame(playerMove);
+    },1000);
+  }
   function playGame(playerMove) {
     const computerMove = pickComputerMove();
   
