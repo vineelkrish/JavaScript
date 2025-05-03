@@ -15,12 +15,23 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     };
   }
   */
-  function autoplay(){
-    setInterval(function(){
-      const playerMove= pickComputerMove();
 
-      playGame(playerMove);
-    },1000);
+  let isAutoplay=false;
+  let int_id;
+  function autoplay(){
+    if(!isAutoplay){
+     int_id = setInterval(function(){
+        const playerMove= pickComputerMove();
+  
+        playGame(playerMove);
+      },1000);
+      isAutoplay=true;
+    }
+    else{
+      clearInterval(int_id);
+      isAutoplay=false;
+    }
+    
   }
   function playGame(playerMove) {
     const computerMove = pickComputerMove();
